@@ -1,0 +1,14 @@
+<h1>Create your new questions</h1>
+
+<%= form_with model: @question do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :mcq %>
+  <%= f.text_field :mcq %>
+  <%= f.label :answer %>
+  <%= f.text_field :answer %>
+  <%= f.label :explanation %>
+  <%= f.text_field :explanation %>
+  <%= f.submit %>
+<% end %>
+
