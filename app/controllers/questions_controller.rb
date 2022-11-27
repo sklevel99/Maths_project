@@ -5,11 +5,10 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    raise
-    # @topic = Topic.find(params[:topic_id])
-    # @question = Question.new(question_params)
-    # @question.save
-    # redirect_to topic_path(@topic)
+    @topic = Topic.find(params[:topic_id])
+    @question = Question.new(question_params)
+    @question.save
+    redirect_to topic_path(@topic)
   end
 
   def edit
