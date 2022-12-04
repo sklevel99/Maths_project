@@ -5,6 +5,7 @@ class CreateQuestions < ActiveRecord::Migration[6.0]
       t.string :mcq
       t.string :answer
       t.string :explanation
+      t.references :topic, null: false, foreign_key: true
 
       t.timestamps
     end

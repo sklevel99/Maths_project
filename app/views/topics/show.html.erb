@@ -1,5 +1,16 @@
 <h1><%= @topic.name %></h1>
 
+<p><strong>Questions</strong></p>
+<ul class="list-group">
+  <% @topic.questions.each do |question| %>
+    <li><%= question.title %></li>
+    <li><%= question.mcq %></li>
+    <li><%= question.answer %></li>
+    <li><%= question.explanation %></li>
+  <% end %>
+</ul>
+<br>
+
 
 <%= link_to 'Delete',
   topic_path(@topic),

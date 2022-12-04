@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_13_004311) do
+ActiveRecord::Schema.define(version: 2022_12_02_235033) do
 
   create_table "questions", force: :cascade do |t|
     t.string "title"
     t.string "mcq"
     t.string "answer"
     t.string "explanation"
+    t.integer "topic_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["topic_id"], name: "index_questions_on_topic_id"
   end
 
   create_table "topics", force: :cascade do |t|
@@ -27,4 +29,5 @@ ActiveRecord::Schema.define(version: 2022_11_13_004311) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "questions", "topics"
 end

@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :set_topic, only: [:new, :create]
   def new
     @topic = Topic.find(params[:topic_id])
     @question = Question.new
@@ -7,8 +8,12 @@ class QuestionsController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @question = Question.new(question_params)
-    @question.save
-    redirect_to topic_path(@topic)
+    @question.topic = @topic
+    if @question.save
+      redirect_to topic_path(@topic)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -21,6 +26,10 @@ class QuestionsController < ApplicationController
 
 
   private
+
+  def set_topic
+    @topic = Topic.find(params[:topic_id])
+  end
 
   def question_params
     params.require(:question).permit(:title, :mcq, :answer, :explanation)
