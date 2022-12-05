@@ -6,22 +6,19 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @topic = Topic.find(params[:topic_id])
     @question = Question.new(question_params)
     @question.topic = @topic
     if @question.save
       redirect_to topic_path(@topic)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
-  def edit
-
-  end
-
-  def update
-
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to topic_path(@question.topic), status: :see_other
   end
 
 

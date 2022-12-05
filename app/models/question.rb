@@ -1,4 +1,4 @@
 class Question < ApplicationRecord
   belongs_to :topic
-  validates :content, presence: true
+  validates :title, :mcq, :answer, :explanation, presence: true
 end

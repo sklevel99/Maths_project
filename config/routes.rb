@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # get "topics/:id/questions/", to: "questions#show"
   resources :topics do
-    resources :questions, except: [:index, :show] do
-    end
+    resources :questions, only: [:new, :create]
   end
+  resources :questions, only: [:destroy]
 end
