@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
+#Adding devise gem
+gem 'devise'
 #Simple form from Bootstrap
 gem "simple_form", github: "heartcombo/simple_form"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
